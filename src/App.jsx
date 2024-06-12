@@ -68,10 +68,10 @@ function App() {
     }
   ];
   const [newData, setnewData] = useState([]);
-  // const [isTrue, setIsTrue] = useState(false);
-  // const changeFlage = () => {
-  //   setIsTrue(!isTrue);
-  // }
+  const [isTrue, setIsTrue] = useState(false);
+  const changeFlage = () => {
+    setIsTrue(!isTrue);
+  }
 
   // promise
   // useEffect(() => {
@@ -106,13 +106,13 @@ function App() {
           })
         }
       </div>
-      {/* <div className='mt-4'>
+      <div className='mt-4 flex items-center flex-col'>
         {isTrue ? <span>Yes its True</span> : <span>No its False</span>}
-        <div>
+        <div className=' mt-2 bg-black text-white p-2 rounded-lg'>
           <button onClick={changeFlage}>Change Flage</button>
         </div>
 
-      </div> */}
+      </div>
       {/* <header className="App-header">
         <div className="flex items-center gap-3 ">
           <button className="bg-green-800 bor h-4 w-4 rounded-md flex justify-center items-center text-white" onClick={() => setCounter(counter + 1)}>+</button>
