@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar.jsx';
 import Card from './Components/Card.jsx';
 function App() {
@@ -67,10 +67,32 @@ function App() {
       imageUrl: "https://img.freepik.com/premium-photo/white-modern-eco-electric-kick-scooter-white-yellow-background-3d-rendering_476612-18669.jpg"
     }
   ];
-  const [isTrue, setIsTrue] = useState(false);
-  const changeFlage = () => {
-    setIsTrue(!isTrue);
-  }
+  const [newData, setnewData] = useState([]);
+  // const [isTrue, setIsTrue] = useState(false);
+  // const changeFlage = () => {
+  //   setIsTrue(!isTrue);
+  // }
+
+  // promise
+  // useEffect(() => {
+  //   const getTodos = () => {
+  //     fetch("https://jsonplaceholder.typicode.com/todos/")
+  //       .then((res) => res.json())
+  //       .then((data) => setData(data));
+  //   };
+  //   getTodos();
+  // }, []);
+  // async
+  useEffect(() => {
+    const getTodos = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/todos/");
+      const data = await res.json();
+      setnewData(data);
+    };
+    getTodos();
+  }, []);
+
+  console.log("Data: ", newData);
   return (
     <div className="flex  items-center justify-center flex-col">
       <Navbar />
@@ -84,13 +106,13 @@ function App() {
           })
         }
       </div>
-      <div className='mt-4'>
+      {/* <div className='mt-4'>
         {isTrue ? <span>Yes its True</span> : <span>No its False</span>}
         <div>
           <button onClick={changeFlage}>Change Flage</button>
         </div>
 
-      </div>
+      </div> */}
       {/* <header className="App-header">
         <div className="flex items-center gap-3 ">
           <button className="bg-green-800 bor h-4 w-4 rounded-md flex justify-center items-center text-white" onClick={() => setCounter(counter + 1)}>+</button>
