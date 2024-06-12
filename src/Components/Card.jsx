@@ -3,7 +3,7 @@ import React from 'react'
 const Card = ({ product }) => {
     console.log(product)
     return (
-        <div className='w-72 mt-4 p-3 bg-[#f2eeee] rounded-lg '>
+        <div className='w-72 mt-4 p-3 bg-[#f2eeee] rounded-lg shadow-xl'>
             <img className='w-full rounded-md '
                 src={product.imageUrl}
                 alt="Lampa"

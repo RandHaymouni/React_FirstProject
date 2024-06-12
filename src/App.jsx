@@ -68,10 +68,10 @@ function App() {
     }
   ];
   const [newData, setnewData] = useState([]);
-  const [isTrue, setIsTrue] = useState(false);
-  const changeFlage = () => {
-    setIsTrue(!isTrue);
-  }
+  // const [isTrue, setIsTrue] = useState(false);
+  // const changeFlage = () => {
+  //   setIsTrue(!isTrue);
+  // }
 
   // promise
   // useEffect(() => {
@@ -106,13 +106,13 @@ function App() {
           })
         }
       </div>
-      <div className='mt-4 flex items-center flex-col'>
+      {/* <div className='mt-4 flex items-center flex-col'>
         {isTrue ? <span>Yes its True</span> : <span>No its False</span>}
         <div className=' mt-2 bg-black text-white p-2 rounded-lg'>
           <button onClick={changeFlage}>Change Flage</button>
         </div>
 
-      </div>
+      </div> */}
       {/* <header className="App-header">
         <div className="flex items-center gap-3 ">
           <button className="bg-green-800 bor h-4 w-4 rounded-md flex justify-center items-center text-white" onClick={() => setCounter(counter + 1)}>+</button>
@@ -120,6 +120,37 @@ function App() {
         </div>
         <span className="flex items-center justify-center" >{counter}</span>
       </header> */}
+
+
+      <div className="flex items-center justify-center gap-5 flex-wrap mx-6 my-20">
+        {newData.map((todo, index) => {
+          if (index <= 20) {
+            return (
+              <div className="w-72 mt-5 p-3 bg-[#eeeeee] rounded-lg shadow-xl">
+                <div className="flex items-center gap-4 flex-col">
+                  <span>
+                    {" "}
+                    <span className="font-bold">Title:</span> {todo.title}
+                  </span>
+                  <span>
+                    {todo.completed ? (
+                      <span className="bg-green-500 rounded-lg px-3 py-1 text-white">
+                        Done
+                      </span>
+                    ) : (
+                      <span className="bg-red-500 rounded-lg px-3 py-1 text-white">
+                        Not completed
+                      </span>
+                    )}
+                  </span>
+                </div>
+              </div>
+
+
+            );
+          }
+        })}
+      </div>
     </div>
   );
 }
