@@ -92,6 +92,18 @@ const Home = () => {
     }, []);
 
     console.log("Data: ", newData);
+
+    const [cart, setCart] = useState(
+        () => JSON.parse(localStorage.getItem("cart")) || []
+    );
+
+    const addToCart = (product) => {
+        setCart([...cart, product]);
+    };
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
     return (
         <div className="flex  items-center justify-center flex-col">
             {/* <Navbar /> */}
@@ -99,7 +111,7 @@ const Home = () => {
                 {
                     productCards.map((product) => {
                         return (
-                            <Card product={product} key={product.name} />
+                            <Card product={product} key={product.name} addToCart={addToCart} />
                         )
 
                     })
